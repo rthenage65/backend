@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Blog css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch src/scss -o src/static --output-style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rthenage65/backend.git"
+  },
+  "author": "Richard Henage",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rthenage65/backend/issues"
+  },
+  "homepage": "https://github.com/rthenage65/backend#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  }
+}
