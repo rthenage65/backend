@@ -1,0 +1,14 @@
+Make the venv
+py -m venv env
+
+Start 
+source env/scripts/activate
+
+Run Server
+python manage.py runserver
+
+Run SCSS
+npm run scss
+
+Create DJango App
+py manage.py startapp <the name of your app>

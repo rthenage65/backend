@@ -3,14 +3,13 @@
 {% block content %}
 <h1>-WATER-</h1>
 <div>Water is the basis of all life. It flows as blood in our veins. It makes up 76% of our cells. We breathe it in the air. We drink it daily. Without water, all life on this planet would cease.</div>
-<form action="/action_page.php">
+<div id="comments"></div>
+<form action="{% url "add_comment" %}" method="POST">
     <div class="header">COMMENT</div>
   Name:<br>
   <input type="text" name="name" autocomplete="off"><br>
-  Email:<br>
-  <input type="email" name="email" autocomplete="off"><br><br>
   Comment:<br>
-  <input type="text" name="comment" autocomplete="off"><br><br>
+  <textarea name="comment" autocomplete="off"></textarea><br><br>
   <input type="submit" value="Submit">
 </form>
 {% endblock content %}

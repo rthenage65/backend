@@ -33,7 +33,7 @@ form {
     padding: 25px;
     text-align: center;
 }
-input[type="text"], input[type="email"] {
+input[type="text"], input[type="email"], textarea {
     font-family: Arial, Helvetica, sans-serif;
     color: darkgreen;
     border: 1px solid darkgreen;
@@ -41,17 +41,18 @@ input[type="text"], input[type="email"] {
     padding: 5px;
     width: 250px;
 }
-input[name="comment"] {
+textarea[name="comment"] {
     width: 90%;
     height: 4em;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    resize: vertical;
 }
 input[type="submit"] {
     width: 50%;
     font-size: 20px;
     border: 1px solid darkgreen;
-    background-color: white;
+    background-color: rgb(50, 150, 50);
     color: darkgreen;
     padding: 10px;
     transition: padding 1s;
