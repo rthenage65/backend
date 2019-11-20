@@ -18,11 +18,12 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from comments import urls as comments_urls
+from comments.views import blog_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('comments/', include(comments_urls)),
 
     path('about', TemplateView.as_view(template_name="about.html"), name="about"),
-    path('', TemplateView.as_view(template_name="index.html"), name="index")
+    path('', blog_post, name="index")
 ]

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import add_comment
+from .views import blog_post
 
-urlpatters = [
-    path('add', add_comment, name="add_comment")
+urlpatterns = [
+    path('get', blog_post, name="get-comment"),
 ]
