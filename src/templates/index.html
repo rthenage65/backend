@@ -14,11 +14,12 @@
 </div>
 <form action="{% url "index" %}" method="POST">
   {% csrf_token %}
-  <div class="header">ADD COMMENT</div>
+  {{form}}
+  {% comment %}  <div class="header">ADD COMMENT</div>
   Name:<br>
   <input type="text" name="name" autocomplete="off"><br>
   Comment:<br>
-  <textarea name="comment" autocomplete="off"></textarea><br><br>
+  <textarea name="comment" autocomplete="off"></textarea><br><br> {% endcomment %}
   <input type="submit" value="Submit">
 </form>
 {% endblock content %}
