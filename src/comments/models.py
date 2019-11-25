@@ -8,3 +8,6 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['created']
+
+    def __str__(self):
+        return self.created.strftime('%m/%d/%Y') + ' ' + self.name

@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 
-from comments import urls as comments_urls
-from comments.views import blog_post
+from src.comments import urls as comments_urls
+from src.comments.views import blog_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
