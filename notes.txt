@@ -1,18 +1,24 @@
 Make the venv
-py -m venv env
+    py -m venv env
 
 Start Env
-source env/scripts/activate
+    source env/scripts/activate
 
 Run Server
-python manage.py runserver
+    python manage.py runserver
 
 Run SCSS
-npm run scss
+    npm run scss
 
 Create DJango App
-py manage.py startapp <the name of your app>
+    py manage.py startapp <the name of your app>
 
 Create Database
-py manage.py makemigrations
-py manage.py migrate
+    py manage.py makemigrations
+    py manage.py migrate
+
+Create txt file with dependancies
+    pip freeze > requirements.txt
+
+Create admin account
+    py manage.py createsuperuser

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import Comment
+from .models import Comment, Post
 from .forms import CommentForm
 from .serializers import CommentSerializer
 import pytz
@@ -32,8 +32,12 @@ def add_comment(request):
 
   return redirect('/')
 
-# Display the comments
+# Display the comments / post
 def blog_post(request):
+  # Post
+  post = Post.objects.filter(id=1)[:1].get()
+
+  # Comments
   form = CommentForm()
   form_errors = {}
   try:
@@ -60,6 +64,7 @@ def blog_post(request):
                 template_name="index.html", 
                 context={
                   'comments': comments, 
+                  'post': post, 
                   'errors': form_errors.values(),
                   'form': form, 
                   'num_comments': len(comments)
