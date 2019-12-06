@@ -8,15 +8,20 @@ import pytz
 
 # Django Rest Framework for seeing the JSON
 @api_view(['POST'])
-def add_comment(request):
+def add_comment(request, post_id):
 
   # Create a form instance and populate it with data from the request:
   form = CommentForm(request.POST)
 
+  comment_data = dict(request.data)
+  comment_data['_post'] = Post.objects.filter(id=post_id)[:1].get()
+
   if form.is_valid():
     # Make a serializer with the JSON from the request
-    serializer = CommentSerializer(data=request.data)
+    serializer = CommentSerializer(data=comment_data)
     # Checks that the JSON has the right fields
+    import pdb
+    pdb.set_trace()
     if serializer.is_valid():
       # Saves the object to the database
       serializer.save()
@@ -30,12 +35,12 @@ def add_comment(request):
     # Cache the errors
     request.session["comment_errors"] = comment_errors
 
-  return redirect('/')
+  return redirect('/posts/{}/'.format(post_id))
 
 # Display the comments / post
-def blog_post(request):
+def blog_post(request, post_id):
   # Post
-  post = Post.objects.filter(id=1)[:1].get()
+  post = Post.objects.filter(id=post_id)[:1].get()
 
   # Comments
   form = CommentForm()
@@ -49,7 +54,7 @@ def blog_post(request):
     pass
 
   # Get all the comments
-  db_comments = Comment.objects.all()
+  db_comments = Comment.objects.filter(_post=post_id)
   comments = []
   # Just send the day of the comment, not the time
   for comment in db_comments.reverse():
@@ -61,11 +66,25 @@ def blog_post(request):
       
   # Render the html for the post
   return render(request, 
-                template_name="index.html", 
+                template_name="posts.html", 
                 context={
                   'comments': comments, 
                   'post': post, 
                   'errors': form_errors.values(),
                   'form': form, 
+                  'post_id': post_id, 
                   'num_comments': len(comments)
+                })
+
+
+# List the posts
+def index(request):
+  # Post
+  posts = Post.objects.all()
+  print(posts)    
+  # Render the html for the post
+  return render(request, 
+                template_name="index.html", 
+                context={
+                  'posts': posts
                 })
