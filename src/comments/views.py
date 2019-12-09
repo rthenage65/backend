@@ -13,6 +13,7 @@ def add_comment(request, post_id):
   # Create a form instance and populate it with data from the request:
   form = CommentForm(request.POST)
 
+  # Dictionary for the comment
   comment_data = dict(request.data)
   comment_data['_post'] = Post.objects.filter(id=post_id)[:1].get()
 
@@ -20,11 +21,11 @@ def add_comment(request, post_id):
     # Make a serializer with the JSON from the request
     serializer = CommentSerializer(data=comment_data)
     # Checks that the JSON has the right fields
-    import pdb
-    pdb.set_trace()
+    # import pdb
+    # pdb.set_trace()
     if serializer.is_valid():
       # Saves the object to the database
-      serializer.save()
+      print(serializer.save())
   else:
     # Get the errors from the form
     errors = form.errors.as_data()
